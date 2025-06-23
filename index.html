@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The World Machine: Documentation</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #8E6578;
+            --card-bg: #2d2d2d;
+            --border-color: #404040;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #b3b3b3;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .command-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .command-name {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .command-desc {
+            color: #cccccc;
+            margin-bottom: 12px;
+        }
+
+        .command-usage {
+            background: #2a2a2a;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            color: #4fc3f7;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .permission-badge {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .permission-badge.staff {
+            background: #f39c12;
+        }
+
+        .permission-badge.admin {
+            background: #e74c3c;
+        }
+
+        .permission-badge.staff {
+            background: #f39c12;
+        }
+
+        .permission-badge.admin {
+            background: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .commands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+        .toc {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .toc h2 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .toc ul {
+            list-style: none;
+            columns: 2;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .toc ul {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The World Machine: Documentation</h1>
+            <p class="description">
+                A comprehensive guide to all available bot commands, organized by category and permission level.
+            </p>
+        </header>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#general-commands">General Commands</a></li>
+                <li><a href="#moderation-commands">Moderation Commands</a></li>
+                <li><a href="#tossing-commands">Tossing Commands</a></li>
+                <li><a href="#config-commands">Configuration Commands</a></li>
+            </ul>
+        </div>
+
+        <!-- General Commands -->
+        <section id="general-commands" class="category">
+            <div class="category-header">General Commands</div>
+            <div class="commands-grid">
+                <!-- About -->
+                <div class="command-card">
+                    <div class="command-name">about</div>
+                    <div class="command-desc">Learn about this bot</div>
+                    <div class="command-usage">pls about</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+
+                <!-- Google -->
+                <div class="command-card">
+                    <div class="command-name">google</div>
+                    <div class="command-desc">Search Google and return the top results</div>
+                    <div class="command-usage">pls google [query]</div>
+                    <div class="command-usage">Example: pls google how to code</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+
+                <!-- Timezone -->
+                <div class="command-card">
+                    <div class="command-name">timezone</div>
+                    <div class="command-desc">Get or set your timezone for time-related commands</div>
+                    <div class="command-usage">pls timezone [timezone]
+Examples:
+pls timezone America/New_York
+pls timezone (shows help)</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+
+                <!-- Roll -->
+                <div class="command-card">
+                    <div class="command-name">roll</div>
+                    <div class="command-desc">Roll dice in XdY format</div>
+                    <div class="command-usage">pls roll XdY
+Examples:
+pls roll 1d6
+pls roll 2d20</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+
+                <!-- Timefor -->
+                <div class="command-card">
+                    <div class="command-name">timefor</div>
+                    <div class="command-desc">Check someone's local time or convert time between timezones</div>
+                    <div class="command-usage">pls timefor [@user] [time]
+Examples:
+pls timefor
+pls timefor @User
+pls timefor 2PM
+pls timefor @User 14:00</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+
+                <!-- Staff -->
+                <div class="command-card">
+                    <div class="command-name">staff</div>
+                    <div class="command-desc">Show currently active staff members</div>
+                    <div class="command-usage">pls staff</div>
+                </div>
+
+                <!-- Pingstaff -->
+                <div class="command-card">
+                    <div class="command-name">pingstaff</div>
+                    <div class="command-desc">Ping the staff team (2-minute cooldown)</div>
+                    <div class="command-usage">pls pingstaff [reason]</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Moderation Commands -->
+        <section id="moderation-commands" class="category">
+            <div class="category-header">Moderation Commands</div>
+            <div class="commands-grid">
+                <!-- Purge -->
+                <div class="command-card">
+                    <div class="command-name">purge</div>
+                    <div class="command-desc">Delete multiple messages at once</div>
+                    <div class="command-usage">pls purge [amount]</div>
+                    <div class="permission-badge staff">Requires: Manage Messages</div>
+                </div>
+
+                <!-- Add Role -->
+                <div class="command-card">
+                    <div class="command-name">addrole</div>
+                    <div class="command-desc">Add a role to a user</div>
+                    <div class="command-usage">pls addrole @user @role</div>
+                    <div class="permission-badge staff">Requires: Manage Roles</div>
+                </div>
+
+                <!-- Remove Role -->
+                <div class="command-card">
+                    <div class="command-name">removerole</div>
+                    <div class="command-desc">Remove a role from a user</div>
+                    <div class="command-usage">pls removerole @user @role</div>
+                    <div class="permission-badge staff">Requires: Manage Roles</div>
+                </div>
+
+                <!-- Nickname -->
+                <div class="command-card">
+                    <div class="command-name">nickname</div>
+                    <div class="command-desc">Change a user's nickname</div>
+                    <div class="command-usage">pls nickname @user [new_nickname]
+Leave nickname empty to remove</div>
+                    <div class="permission-badge staff">Requires: Manage Nicknames</div>
+                </div>
+
+                <!-- Kick -->
+                <div class="command-card">
+                    <div class="command-name">kick</div>
+                    <div class="command-desc">Kick a user from the server</div>
+                    <div class="command-usage">pls kick @user [reason]</div>
+                    <div class="permission-badge staff">Requires: Kick Members</div>
+                </div>
+
+                <!-- Ban -->
+                <div class="command-card">
+                    <div class="command-name">ban</div>
+                    <div class="command-desc">Ban a user from the server</div>
+                    <div class="command-usage">pls ban @user [duration] [reason]
+Duration format: 1d, 2h, 30m, 1w</div>
+                    <div class="permission-badge admin">Requires: Ban Members</div>
+                </div>
+
+                <!-- Mute -->
+                <div class="command-card">
+                    <div class="command-name">mute</div>
+                    <div class="command-desc">Timeout a user</div>
+                    <div class="command-usage">pls mute @user [duration] [reason]
+Duration format: 1d, 2h, 30m</div>
+                    <div class="permission-badge staff">Requires: Moderate Members</div>
+                </div>
+
+                <!-- Say -->
+                <div class="command-card">
+                    <div class="command-name">say</div>
+                    <div class="command-desc">Make the bot say something</div>
+                    <div class="command-usage">pls say [channel] [message]
+Example: pls say #general Hello!</div>
+                    <div class="permission-badge staff">Requires: Send Messages</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auto Slowmode Commands -->
+        <section id="auto-slowmode-commands" class="category">
+            <div class="category-header">Auto Slowmode</div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">slowmode add</div>
+                    <div class="command-desc">Add automatic slowmode to the current channel</div>
+                    <div class="command-usage">pls slowmode add [sensitivity]
+Example: pls slowmode add 5.0
+Default sensitivity is 5.0 (max 10.0)</div>
+                    <div class="permission-badge staff">Requires: Manage Channels</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">slowmode remove</div>
+                    <div class="command-desc">Remove automatic slowmode from the current channel</div>
+                    <div class="command-usage">pls slowmode remove</div>
+                    <div class="permission-badge staff">Requires: Manage Channels</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">slowmode set sensitivity</div>
+                    <div class="command-desc">Set the sensitivity of auto slowmode</div>
+                    <div class="command-usage">pls slowmode set sensitivity [value]
+Example: pls slowmode set sensitivity 7.5
+Higher values = more aggressive slowmode
+Range: 0.1 to 10.0</div>
+                    <div class="permission-badge staff">Requires: Manage Channels</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tossing Commands -->
+        <section id="tossing-commands" class="category">
+            <div class="category-header">Tossing Commands</div>
+            <div class="commands-grid">
+                <!-- Toss -->
+                <div class="command-card">
+                    <div class="command-name">toss</div>
+                    <div class="command-desc">Toss a user into a private channel</div>
+                    <div class="command-usage">pls toss @user [reason]</div>
+                    <div class="permission-badge staff">Requires: Toss Permission</div>
+                </div>
+
+                <!-- Untoss -->
+                <div class="command-card">
+                    <div class="command-name">untoss</div>
+                    <div class="command-desc">Release a user from being tossed</div>
+                    <div class="command-usage">pls untoss @user [reason]</div>
+                    <div class="permission-badge staff">Requires: Toss Permission</div>
+                </div>
+
+                <!-- Close -->
+                <div class="command-card">
+                    <div class="command-name">close</div>
+                    <div class="command-desc">Close the current toss channel</div>
+                    <div class="command-usage">pls close [reason]</div>
+                    <div class="permission-badge staff">Requires: Toss Permission</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Commands -->
+        <section id="config-commands" class="category">
+            <div class="category-header">Configuration Commands</div>
+            <div class="commands-grid">
+                <!-- Config Command -->
+                <div class="command-card">
+                    <div class="command-name">config</div>
+                    <div class="command-desc">Server configuration management</div>
+                    <div class="command-usage">pls config [subcommand]
+
+Available subcommands:
+• get - Get current server config
+• set - Update server config
+• view - View current settings
+
+Example:
+pls config get (shows current config)
+pls config set (updates config)</div>
+                    <div class="permission-badge admin">Requires: Administrator</div>
+                </div>
+
+                <!-- Voice Command -->
+                <div class="command-card">
+                    <div class="command-name">voice</div>
+                    <div class="command-desc">Manage your personal apartment room</div>
+                    <div class="command-usage">pls voice [subcommand]
+
+Available subcommands:
+• help - Show apartment room commands
+• limit [number] - Set user limit (0 for unlimited)
+• lock - Lock room (sets user limit to 1)
+• unlock - Unlock room (sets user limit to 0)
+• name [new_name] - Rename your apartment
+• kick @user - Kick a user from your room
+• ban @user - Ban a user from your room</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice help</div>
+                    <div class="command-desc">Show apartment room commands and current settings</div>
+                    <div class="command-usage">pls voice help</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice limit</div>
+                    <div class="command-desc">Set the maximum number of users in your apartment (0 for unlimited)</div>
+                    <div class="command-usage">pls voice limit [number]
+Examples:
+pls voice limit 5
+pls voice limit 0 (for unlimited users)</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice lock/unlock</div>
+                    <div class="command-desc">Lock (limit to 1 user) or unlock (no limit) your apartment</div>
+                    <div class="command-usage">pls voice lock
+pls voice unlock</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice name</div>
+                    <div class="command-desc">Rename your apartment room</div>
+                    <div class="command-usage">pls voice name [new_name]
+Example:
+pls voice name Example</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice kick</div>
+                    <div class="command-desc">Remove someone from your apartment room</div>
+                    <div class="command-usage">pls voice kick @user
+Example:
+pls voice kick @user</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="command-name">voice ban</div>
+                    <div class="command-desc">Ban or unban someone from your apartment room</div>
+                    <div class="command-usage">pls voice ban @user
+(Use the same command to unban)</div>
+                    <div style="color: #aaa; font-size: 0.9rem; margin: 5px 0;">Required to be in Apartment Room</div>
+                    <div class="permission-badge">Everyone</div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin: 40px 0; color: #888;">
+            <p>Last updated: June 11, 2025</p>
+            <p>Bot Documentation v1.0</p>
+        </footer>
+    </div>
+</body>
+</html>
